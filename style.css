@@ -1,0 +1,75 @@
+.search-bar {
+    width: 400px; /* Adjust the width as needed */
+}
+.banner {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+}
+.services-section {
+    padding: 40px 0;
+}
+.card img {
+    object-fit: cover;
+}
+
+.instructor-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.instructor-card img {
+    max-width: 100%;
+    height: auto;
+}
+.instructor-card-body {
+    padding: 1.5rem;
+}
+
+.blog-post {
+    margin-bottom: 2rem;
+}
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+}
+.blog-post-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.blog-post-excerpt {
+    font-size: 1rem;
+    color: #6c757d;
+}
+.read-more {
+    font-weight: bold;
+    color: #007bff;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    text-align: center;
+}
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.social-links a {
+    margin: 0 0.5rem;
+    color: #495057;
+}
+.social-links a:hover {
+    color: #007bff;
+}
