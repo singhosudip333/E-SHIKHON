@@ -27,15 +27,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Check if instructor data was found
         if ($instructor) {
             // Insert data into the instructor table
-            $stmt = $conn->prepare("INSERT INTO instructor (email,fullname ,password, image, apply_id, expertise_field, relevent_exper, experience, portfolio_link, approved_by, approved_at)
-                                    VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
-            $stmt->bind_param("ssssisssss", $instructor['email'],$instructor['fullname'], $password, $instructor['image'], $instructor['id'], $instructor['expertise_field'], $instructor['relevent_exper'], $instructor['experience'], $instructor['portfolio_link'], $admin_username);
-            $stmt->execute();
-
-            // Update the status in the apply_instructor table
-            $stmt = $conn->prepare("UPDATE apply_instructor SET status = 'approved' WHERE id = ?");
-            $stmt->bind_param("i", $apply_id);
-            $stmt->execute();
+            $stmt = $conn->prepare("INSERT INTO instructor (email, full_name, password, profile_image, phone, field_expertise, experience_years, portfolio_link, status, created_at) 
+                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active', NOW())");
+            $stmt->bind_param("ssssssss", 
+                $instructor['email'],
+                $instructor['fullname'],
+                $password,
+                $instructor['image'],
+                $instructor['phonenumber'],
+                $instructor['expertise_field'],
+                $instructor['experience'],
+                $instructor['portfolio_link']
+            );
+            
+            if($stmt->execute()) {
+                // Update the status in the apply_instructor table
+                $stmt = $conn->prepare("UPDATE apply_instructor SET status = 'approved' WHERE id = ?");
+                $stmt->bind_param("i", $apply_id);
+                $stmt->execute();
+                
+                // TODO: Send email to instructor with their credentials
+            }
         }
     } elseif (isset($_POST['reject'])) {
         $apply_id = $_POST['apply_id'];
@@ -45,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch all instructors who applied
+// Fetch all pending instructor applications
 $query = "SELECT * FROM apply_instructor WHERE status = 'pending'";
 $result = $conn->query($query);
 ?>
@@ -55,7 +67,7 @@ $result = $conn->query($query);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manage Instructors</title>
+    <title>Instructor Applications</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Custom Styles */
@@ -130,60 +142,80 @@ $result = $conn->query($query);
         <a href="admin_dashboard.php" class="btn btn-primary">Go to Dashboard</a>
     </div>
 
-    <h2 class="text-center">Manage Instructor Applications</h2>
+    <h2 class="text-center">Pending Instructor Applications</h2>
     <input type="text" id="search" class="form-control mb-3" placeholder="Search by email">
     
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Picture</th>
+                <th>Profile Image</th>
                 <th>Full Name</th>
                 <th>Email</th>
-                <th>Phone Number</th>
+                <th>Phone</th>
                 <th>Field of Expertise</th>
+                <th>Experience</th>
+                <th>Portfolio</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody id="instructorTable">
             <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-                <td><img src="uploads/instructors/<?php echo $row['image']; ?>" alt="Instructor Image"></td>
+                <td>
+                    <?php if ($row['image']): ?>
+                        <img src="../uploads/instructors/<?php echo $row['image']; ?>" alt="Instructor Image">
+                    <?php else: ?>
+                        <img src="../uploads/instructors/default.jpg" alt="Default Image">
+                    <?php endif; ?>
+                </td>
                 <td><?php echo $row['fullname']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td><?php echo $row['phonenumber']; ?></td>
                 <td><?php echo $row['expertise_field']; ?></td>
+                <td><?php echo $row['experience']; ?></td>
                 <td>
+                    <?php if ($row['portfolio_link']): ?>
+                        <a href="<?php echo $row['portfolio_link']; ?>" target="_blank" class="btn btn-sm btn-info">View</a>
+                    <?php else: ?>
+                        N/A
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#passwordModal-<?php echo $row['id']; ?>">
+                        Accept
+                    </button>
                     <form method="post" class="d-inline">
                         <input type="hidden" name="apply_id" value="<?php echo $row['id']; ?>">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#passwordModal-<?php echo $row['id']; ?>">Accept</button>
-                        <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+                        <button type="submit" name="reject" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to reject this application?')">
+                            Reject
+                        </button>
                     </form>
 
                     <!-- Password Modal -->
-                    <div class="modal fade" id="passwordModal-<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="passwordModal-<?php echo $row['id']; ?>" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="passwordModalLabel">Assign Password</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title">Set Instructor Password</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <form method="post">
                                     <div class="modal-body">
                                         <input type="hidden" name="apply_id" value="<?php echo $row['id']; ?>">
-                                        <div class="form-group">
+                                        <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" class="form-control" name="password" required>
+                                            <small class="text-muted">This password will be sent to the instructor's email.</small>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" name="accept" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="accept" class="btn btn-primary">Approve & Send Credentials</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <!-- End of Password Modal -->
                 </td>
             </tr>
             <?php endwhile; ?>

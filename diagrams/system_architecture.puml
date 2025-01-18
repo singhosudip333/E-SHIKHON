@@ -1,0 +1,98 @@
+@startuml Learning Management System
+
+' Styling
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+skinparam linetype ortho
+skinparam padding 5
+skinparam shadowing false
+
+' Colors - Simple color scheme
+skinparam {
+    PackageBackgroundColor white
+    PackageBorderColor black
+    ComponentBackgroundColor #E8F8F5
+    DatabaseBackgroundColor #FCF3CF
+    ActorBackgroundColor #D6EAF8
+}
+
+' Title
+title E-Learning Management System
+
+' Main System Layout
+package "Learning Management System" {
+    ' Users
+    package "Users" {
+        actor "Admin" as admin
+        actor "Instructor" as instructor
+        actor "Student" as student
+    }
+
+    ' Core Features
+    package "Core Features" {
+        [Authentication] as auth
+        package "Course System" {
+            [Course Management] as course
+            [Content Management] as content
+        }
+        package "User System" {
+            [User Management] as users
+            [Enrollment System] as enroll
+        }
+    }
+
+    ' Storage
+    package "Data Storage" {
+        database "Database" {
+            [User Data]
+            [Course Data]
+            [Enrollment Data]
+        }
+        
+        storage "Files" {
+            [Course Materials]
+            [User Files]
+        }
+    }
+}
+
+' Key Relationships
+' User Access
+admin --> auth
+instructor --> auth
+student --> auth
+
+' Admin Access
+admin --> users
+admin --> course
+
+' Instructor Access
+instructor --> course
+instructor --> content
+
+' Student Access
+student --> enroll
+student --> content
+
+' Data Flow
+course --> [Course Data]
+course --> [Course Materials]
+users --> [User Data]
+users --> [User Files]
+enroll --> [Enrollment Data]
+
+' Simple Notes
+note right of auth
+  Login & Access Control
+end note
+
+note right of course
+  Course Creation & Management
+end note
+
+note right of enroll
+  Student Course Registration
+end note
+
+@enduml 

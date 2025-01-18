@@ -28,91 +28,94 @@ $instructor = $result->fetch_assoc();
     <i class="bi bi-sun-fill" id="themeIcon"></i>
 </button>
 
-<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
-        <?php echo htmlspecialchars($instructor['full_name']); ?>
-    </a>
-
-    <ul class="navbar-nav flex-row d-md-none">
-        <li class="nav-item text-nowrap">
-            <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list"></i>
-            </button>
-        </li>
-    </ul>
+<header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">E-SHIKHON</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav"> 
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <span class="nav-link">
+                        <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($instructor['full_name']); ?>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="logout.php"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="sidebarMenuLabel">
-                        <?php echo htmlspecialchars($instructor['full_name']); ?>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+        <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4">
+            <div class="container mt-2">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
                 </div>
-                <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#profile">
-                                <i class="bi bi-person"></i>
-                                Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#add-course">
-                                <i class="bi bi-plus-circle"></i>
-                                Add Course
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#upload">
-                                <i class="bi bi-upload"></i>
-                                Upload
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#material">
-                                <i class="bi bi-file-earmark-text"></i>
-                                Material
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#edit-course">
-                                <i class="bi bi-pencil-square"></i>
-                                Edit Course
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#feedback">
-                                <i class="bi bi-star"></i>
-                                Feedback and Ratings
-                            </a>
-                        </li>
-                    </ul>
-
-                    <hr class="my-3">
-
-                    <ul class="nav flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="logout.php">
-                                <i class="bi bi-door-closed"></i>
-                                Sign out
-                            </a>
-                        </li>
-                    </ul>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Profile</h5>
+                                <p class="card-text">View and edit your personal information.</p>
+                                <a href="profile.php" class="btn btn-primary ">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Course</h5>
+                                <p class="card-text">Create and publish new courses for students.</p>
+                                <a href="./add_course.php" class="btn btn-primary">Add New Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Upload Video</h5>
+                                <p class="card-text">Select a course to upload video materials.</p>
+                                <a href="upload_video.php" class="btn btn-primary">Upload Video</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Material</h5>
+                                <p class="card-text">Access and manage your course materials.</p>
+                                <a href="view_materials.php" class="btn btn-primary">View Materials</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Edit Course</h5>
+                                <p class="card-text">Modify existing courses and update content.</p>
+                                <a href="./edit_course.php" class="btn btn-primary">Edit Existing Course</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="min-height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Edit Videos & Materials</h5>
+                                <p class="card-text">Update or delete your course videos and materials.</p>
+                                <a href="./edit_content.php" class="btn btn-primary">Manage Content</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <!-- Your main content sections will go here -->
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <hr class="my-3">
             </div>
-            
-            <!-- Content sections will be loaded here -->
         </main>
     </div>
 </div>
@@ -162,18 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to load content sections
     function loadSection(sectionId) {
         // Show loading indicator if needed
-        document.querySelector('main').innerHTML = '<div class="text-center p-5"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
         
         // Fetch the appropriate section file
-        let url;
-        switch(sectionId) {
-            case 'profile':
-                url = 'sections/profile.php'; // Path to your existing profile.php
-                break;
-            default:
-                url = `sections/${sectionId}.php`; // For other sections
-        }
-
+        
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -195,9 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load profile section by default
     const defaultSection = 'profile';
-    document.querySelector(`a[href="#${defaultSection}"]`).classList.add('active');
+    document.querySelector(a[href="#${defaultSection}"]).classList.add('active');
     loadSection(defaultSection);
 });
 </script>
 </body>
-</html>
+</html>z

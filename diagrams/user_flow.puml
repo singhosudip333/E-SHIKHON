@@ -1,0 +1,97 @@
+@startuml User Flow Diagram
+
+' Styling
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam ArrowColor #666666
+skinparam ActivityBorderColor #666666
+skinparam ActivityBackgroundColor #FAFAFA
+skinparam nodesep 50
+skinparam ranksep 50
+
+' Title
+title E-SHIKHON - Learning Management System Flow
+
+|#WhiteSmoke|Common|
+start
+
+|#AntiqueWhite|Public Pages|
+:Landing Page (index.html);
+split
+    :Browse Courses;
+split again
+    :User Login;
+split again
+    :Instructor Login;
+split again
+    :Admin Login;
+split again
+    :Register;
+    note right: Name, Email,\nPhone, Password
+end split
+
+|#LightBlue|Admin|
+if (Admin?) then (yes)
+    :Admin Dashboard;
+    split
+        :Manage Users;
+        :Ban/Unban;
+    split again
+        :Manage Instructors;
+        :Review Applications;
+    split again
+        :Monitor Courses;
+    end split
+endif
+
+|#LightGreen|Instructor|
+if (Instructor?) then (yes)
+    :Instructor Dashboard;
+    split
+        :Manage Courses;
+        :Create/Edit;
+        :Add Content;
+    split again
+        :View Students;
+        :Track Progress;
+    split again
+        :Profile;
+    end split
+endif
+
+|#LightYellow|Student|
+if (Student?) then (yes)
+    :Student Dashboard;
+    split
+        :Browse Courses;
+        if (Enroll?) then (yes)
+            :Access Course;
+            :Study Materials;
+        else (no)
+            :View Details;
+        endif
+    split again
+        :My Courses;
+        :View Progress;
+    split again
+        :Profile;
+        :Settings;
+    end split
+endif
+
+|#WhiteSmoke|Common|
+:Logout;
+stop
+
+legend right
+    |Color|Section|
+    |<#AntiqueWhite>|Public|
+    |<#LightBlue>|Admin|
+    |<#LightGreen>|Instructor|
+    |<#LightYellow>|Student|
+    |<#WhiteSmoke>|Common|
+endlegend
+
+@enduml 

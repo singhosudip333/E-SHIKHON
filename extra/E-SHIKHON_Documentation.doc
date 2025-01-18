@@ -1,0 +1,215 @@
+﻿E-SHIKHON: Online Learning Management System
+Project Documentation
+Project Overview
+Project Name: E-SHIKHON Type: Online Learning Management System (LMS) Last Updated: January 14, 2024
+Technology Stack
+• Backend: PHP
+• Database: MySQL
+• Frontend: HTML5, CSS3, Bootstrap 5
+• Additional Libraries: Font Awesome (for icons)
+• Server: Apache (XAMPP)
+1. System Architecture
+1.1 Core Components
+1. User Management System
+2. Course Management System
+3. Instructor Portal
+4. Admin Dashboard
+5. Content Delivery System
+1.2 Directory Structure
+E-SHIKHON/
+├── admin/                 # Administrative interface
+├── instructor/            # Instructor portal
+├── includes/             # Common PHP includes
+├── uploads/              # File storage
+│   ├── courses/         # Course materials
+│   └── instructor/      # Instructor files
+├── images/              # Static images
+├── public/              # Public assets
+└── Courses/             # Course-related files
+2. Feature Details
+2.1 User Management
+Files:
+• user_signup.php (8.0KB) - User registration
+• user_login.php (5.0KB) - Authentication
+• viewprofile.php (6.3KB) - Profile viewing
+• editprofile.php (8.7KB) - Profile editing
+• change-password.php (6.6KB) - Password management
+Features:
+• Secure user registration
+• Email-based authentication
+• Profile management
+• Password recovery
+• Session management
+2.2 Course Management
+Files:
+• all_courses.php (8.9KB) - Course listing
+• course_details.php (10KB) - Course information
+• view_enrolled_course.php (14KB) - Course viewer
+• process_enrollment.php (2.4KB) - Enrollment handler
+Features:
+• Course categorization
+• Course enrollment system
+• Progress tracking
+• Material download system
+• Course rating system
+2.3 Course Categories
+1. Ongoing Courses (ongoing_courses.php)
+o Active course tracking
+o Progress visualization
+o Continue learning functionality
+2. Upcoming Courses (upcoming_courses.php)
+o Pre-enrollment options
+o Course previews
+o Start date notifications
+2.4 Instructor Features
+Files:
+• view_instructor_profile.php (7.2KB)
+• viewinstructor.php (7.3KB)
+Capabilities:
+• Course creation
+• Content management
+• Student progress monitoring
+• Profile customization
+• Material upload system
+3. Database Schema
+3.1 Main Tables
+1. users
+o id (Primary Key)
+o email
+o password
+o full_name
+o profile_image
+o status
+o created_at
+2. instructor
+o id (Primary Key)
+o full_name
+o email
+o field_expertise
+o experience_years
+o bio
+o profile_image
+o portfolio_link
+o status
+3. courses
+o id (Primary Key)
+o title
+o description
+o instructor_id (Foreign Key)
+o course_image
+o status
+o created_at
+o start_date
+o level
+4. enrollments
+o id (Primary Key)
+o user_id (Foreign Key)
+o course_id (Foreign Key)
+o enrollment_date
+o progress
+o status
+4. Security Implementation
+4.1 Authentication
+• Session-based authentication
+• Secure password hashing
+• Role-based access control
+4.2 Data Protection
+• SQL injection prevention
+• XSS protection
+• CSRF protection
+• Input validation
+4.3 File Security
+• Secure file upload system
+• File type validation
+• Size restrictions
+• Access control
+5. User Interface
+5.1 Design Features
+• Responsive layout
+• Mobile-friendly design
+• Interactive elements
+• Progress visualization
+• Modern card-based interface
+5.2 Key Components
+• Navigation bar
+• Course cards
+• Profile sections
+• Progress bars
+• Download buttons
+• Rating system
+6. User Roles and Permissions
+6.1 Student
+Permissions:
+• Browse courses
+• Enroll in courses
+• View materials
+• Track progress
+• Rate courses
+• Edit profile
+6.2 Instructor
+Permissions:
+• Create courses
+• Manage content
+• View enrollments
+• Track student progress
+• Customize profile
+• Upload materials
+6.3 Administrator
+Permissions:
+• Manage users
+• Oversee courses
+• Control instructors
+• System settings
+• Content moderation
+7. File Management
+7.1 Upload Directories
+1. Course Materials
+o Location: /uploads/courses/
+o Types: PDFs, videos, documents
+2. Profile Images
+o Location: /uploads/profiles/
+o Types: JPG, PNG, GIF
+3. Course Images
+o Location: /uploads/courses/thumbnails/
+o Types: JPG, PNG
+8. Performance Optimization
+8.1 Implemented Features
+• Image optimization
+• CSS minification
+• Efficient database queries
+• Caching mechanisms
+8.2 Best Practices
+• Prepared statements
+• Optimized file storage
+• Efficient session handling
+• Resource optimization
+9. Future Enhancements
+9.1 Planned Features
+1. Live session support
+2. Advanced analytics
+3. Payment integration
+4. Mobile application
+5. API development
+9.2 Potential Improvements
+1. Enhanced search functionality
+2. Advanced reporting
+3. Social learning features
+4. Gamification elements
+5. Certificate system
+10. Support and Maintenance
+10.1 Regular Tasks
+• Database backup
+• Security updates
+• Content moderation
+• User support
+• Performance monitoring
+10.2 Documentation
+• Code comments
+• API documentation
+• User guides
+• System architecture
+• Database schema
+
+Note: This documentation is maintained and updated regularly to reflect system changes and improvements.
+Last Updated: January 14, 2024 Version: 1.0
+

@@ -1,11 +1,18 @@
 <?php
-include("connection.php"); // Include your database connection file
+/**
+ * User Registration Page
+ * Handles new user account creation with form validation and database storage
+ * Collects user details including personal information and account credentials
+ */
 
+include("connection.php"); // Include database connection configuration
+
+// Initialize message variables for user feedback
 $success = '';
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+    // Collect all form fields
     $fullname = $_POST['name'];
     $phone = $_POST['phone'];
     $occupation = $_POST['occupation'];
@@ -13,35 +20,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $dob = $_POST['birthdate'];
     $password = $_POST['password'];
-    $status = 'active'; // Default status
+    $status = 'active'; // Set default account status as active
 
-    // Validate form inputs
+    // Validate that all required fields are filled
     if (empty($fullname) || empty($phone) || empty($occupation) || empty($email) || empty($address) || empty($dob) || empty($password)) {
         $error = 'All fields are required.';
     } else {
-        // Sanitize email
+        // Sanitize email input for security
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         
-        // SQL query to insert user data
+        // Prepare SQL query for user registration
+        // Stores user details in the database with initial active status
         $sql = "INSERT INTO `users`(`email`, `fullname`, `phone`, `dob`, `password`, `occupation`, `address`, `status`) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
-        // Prepare the statement
+        // Use prepared statement to prevent SQL injection
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssss", $email, $fullname, $phone, $dob, $password, $occupation, $address, $status);
         
-        // Execute the query
+        // Execute registration query and handle result
         if ($stmt->execute()) {
             $success = 'Sign up successful! You can now log in.';
         } else {
             $error = 'Error: ' . $stmt->error;
         }
         
-        // Close the statement
+        // Clean up database resources
         $stmt->close();
     }
     
-    // Close the database connection
     $conn->close();
 }
 ?>
