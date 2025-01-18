@@ -1,29 +1,29 @@
-
-
-
-
-
 <!doctype html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!-- Meta tags for character encoding and responsive viewport -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- External CSS Dependencies -->
+    <!-- Bootstrap CSS for styling and responsive layout -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <!-- Font Awesome CSS -->
+    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
+    <!-- Custom stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <title>Welcome</title>
+    <title>E-SHIKHON - Learn Without Limits</title>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container-fluid d-flex align-items-center">
             <a class="navbar-brand" href="#">
                 <h2>E-SHIKHON</h2>
@@ -31,12 +31,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="m-auto">
-                <form class="d-flex me-2">
-                    <input class="form-control search-bar me-2" type="search" placeholder="Course name" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+            
             <div class="d-flex ms-auto">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -64,134 +59,193 @@
             </div>
         </div>
     </nav>
-    
 
+    <!-- Hero/Banner Section -->
     <div class="container-fluid banner">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <h1>Welcome to E-SHIKHON</h1>
-                <h3>where possibilities begin</h3>
-            </div>
-            <div class="col-md-6 text-md-right">
-                <img src="./images/istockphoto-1059510610-612x612.jpg" alt="Banner Image">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1>Transform Your Future with E-SHIKHON</h1>
+                    <h3>Learn from industry experts and boost your career</h3>
+                    <div class="mt-4">
+                        <a href="user_signup.php" class="btn btn-primary me-3">Get Started</a>
+                        <a href="#courses" class="btn btn-outline-primary">Explore Courses</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="./images/istockphoto-1059510610-612x612.jpg" alt="Banner Image" class="img-fluid">
+                </div>
             </div>
         </div>
-    </div><br>
+    </div>
 
-    <div class="container services-section">
-        <h2 class="text-center mb-4">Our Services</h2><br>
+    <!-- Services Section -->
+    <div class="container services-section" id="courses">
+        <div class="text-center mb-5">
+            <h2>Popular Course Categories</h2>
+            <p class="lead text-muted">Choose from our wide range of professional courses</p>
+        </div>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/ux.png" class="card-img-top w-50 m-auto img-fluid" alt="Service 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Web Design</h5>
-                        <p class="card-text">Details about Service 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="card h-100">
+                    <img src="./images/ux.png" class="card-img-top w-50 m-auto" alt="Web Design">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Web Design & Development</h5>
+                        <p class="card-text">Master modern web technologies and build responsive, user-friendly websites.</p>
+                        <a href="#" class="btn btn-outline-primary mt-2">View Courses</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/ux.png" class="card-img-top w-50 m-auto img-fluid" alt="Service 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Graphics Design</h5>
-                        <p class="card-text">Details about Service 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="card h-100">
+                    <img src="./images/ux.png" class="card-img-top w-50 m-auto" alt="Graphics Design">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Graphics & UI/UX Design</h5>
+                        <p class="card-text">Create stunning visuals and design user experiences that make an impact.</p>
+                        <a href="#" class="btn btn-outline-primary mt-2">View Courses</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/ux.png" class="card-img-top w-50 m-auto img-fluid" alt="Service 3">
-                    <div class="card-body">
+                <div class="card h-100">
+                    <img src="./images/ux.png" class="card-img-top w-50 m-auto" alt="Digital Marketing">
+                    <div class="card-body text-center">
                         <h5 class="card-title">Digital Marketing</h5>
-                        <p class="card-text">Details about Service 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="card-text">Learn modern marketing strategies to grow businesses in the digital age.</p>
+                        <a href="#" class="btn btn-outline-primary mt-2">View Courses</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="container my-2">
-        <div class="text-center mb-4">
-            <h2>We Have the Best Instructors</h2>
-            <p class="lead">Meet our team of experienced professionals who are dedicated to your success.</p>
+    <!-- Featured Instructors Section -->
+    <section class="container my-5">
+        <div class="text-center mb-5">
+            <h2>Learn from the Best</h2>
+            <p class="lead text-muted">Our instructors are industry experts with years of practical experience</p>
         </div>
         <div class="row">
             <!-- Instructor Card 1 -->
             <div class="col-md-4">
                 <div class="instructor-card">
-                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Instructor 1">
+                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Dr. Sarah Johnson">
                     <div class="instructor-card-body">
-                        <h5 class="card-title">Instructor Name 1</h5>
-                        <p class="card-text">Short description about the instructor's expertise and background.</p>
+                        <h5 class="card-title">Dr. Sarah Johnson</h5>
+                        <p class="text-muted mb-2">Web Development Expert</p>
+                        <p class="card-text">Former Google engineer with 10+ years of experience in full-stack development. Taught 50,000+ students worldwide.</p>
+                        <div class="mt-3">
+                            <span class="me-3"><i class="fas fa-star text-warning"></i> 4.9/5</span>
+                            <span><i class="fas fa-user-graduate text-primary"></i> 50K+ students</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Instructor Card 2 -->
             <div class="col-md-4">
                 <div class="instructor-card">
-                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Instructor 2">
+                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Michael Chen">
                     <div class="instructor-card-body">
-                        <h5 class="card-title">Instructor Name 2</h5>
-                        <p class="card-text">Short description about the instructor's expertise and background.</p>
+                        <h5 class="card-title">Michael Chen</h5>
+                        <p class="text-muted mb-2">UI/UX Design Specialist</p>
+                        <p class="card-text">Award-winning designer with experience at Apple and Adobe. Creator of the popular Design Mastery course series.</p>
+                        <div class="mt-3">
+                            <span class="me-3"><i class="fas fa-star text-warning"></i> 4.8/5</span>
+                            <span><i class="fas fa-user-graduate text-primary"></i> 35K+ students</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Instructor Card 3 -->
             <div class="col-md-4">
                 <div class="instructor-card">
-                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Instructor 3">
+                    <img src="./images/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="Emma Rodriguez">
                     <div class="instructor-card-body">
-                        <h5 class="card-title">Instructor Name 3</h5>
-                        <p class="card-text">Short description about the instructor's expertise and background.</p>
+                        <h5 class="card-title">Emma Rodriguez</h5>
+                        <p class="text-muted mb-2">Digital Marketing Expert</p>
+                        <p class="card-text">Digital marketing consultant for Fortune 500 companies. Helped 1000+ businesses scale their online presence.</p>
+                        <div class="mt-3">
+                            <span class="me-3"><i class="fas fa-star text-warning"></i> 4.9/5</span>
+                            <span><i class="fas fa-user-graduate text-primary"></i> 40K+ students</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Success Stories Section -->
     <section class="container my-5">
-        <div class="text-center mb-4">
-            <h2>Previous Success Stories</h2>
-            <p class="lead">Explore our achievements and see how we've made a difference with our past projects.</p>
+        <div class="text-center mb-5">
+            <h2>Student Success Stories</h2>
+            <p class="lead text-muted">See how our courses have transformed careers and lives</p>
         </div>
         <div class="row">
-            <!-- Blog Post 1 -->
+            <!-- Success Story 1 -->
             <div class="col-md-6">
                 <div class="blog-post">
-                    <img src="./images/001.jpg" alt="Success Story 1"><br><br>
-                    <h3 class="blog-post-title">Success Story Title 1</h3>
-                    <p class="blog-post-excerpt">A brief overview of the success story, highlighting key achievements and outcomes. This is a short excerpt that gives readers an idea of what the full story will be about.</p>
-                    <a href="#" class="read-more">Read more</a>
+                    <img src="./images/001.jpg" alt="Success Story 1">
+                    <h3 class="blog-post-title">From Beginner to Senior Developer in 8 Months</h3>
+                    <p class="blog-post-excerpt">"After completing the Full-Stack Development course, I landed a job at a tech startup with a 150% salary increase. The practical projects and mentorship made all the difference." - David Park</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">Web Development</span>
+                        <span class="badge bg-secondary">Career Change</span>
+                    </div>
+                    <a href="#" class="read-more">Read full story <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
+            <!-- Success Story 2 -->
             <div class="col-md-6">
                 <div class="blog-post">
-                    <img src="./images/001.jpg" alt="Success Story 2"><br><br>
-                    <h3 class="blog-post-title">Success Story Title 2</h3>
-                    <p class="blog-post-excerpt">A brief overview of the success story, highlighting key achievements and outcomes. This is a short excerpt that gives readers an idea of what the full story will be about.</p>
-                    <a href="#" class="read-more">Read more</a>
+                    <img src="./images/001.jpg" alt="Success Story 2">
+                    <h3 class="blog-post-title">Launched My Own Design Agency</h3>
+                    <p class="blog-post-excerpt">"The UI/UX Design course gave me the confidence to start my own agency. Within a year, we're working with clients worldwide and have a team of 5 designers." - Sarah Chen</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">UI/UX Design</span>
+                        <span class="badge bg-secondary">Entrepreneurship</span>
+                    </div>
+                    <a href="#" class="read-more">Read full story <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
+            <!-- Success Story 3 -->
             <div class="col-md-6">
                 <div class="blog-post">
-                    <img src="./images/001.jpg" alt="Success Story 3"><br><br>
-                    <h3 class="blog-post-title">Success Story Title 3</h3>
-                    <p class="blog-post-excerpt">A brief overview of the success story, highlighting key achievements and outcomes. This is a short excerpt that gives readers an idea of what the full story will be about.</p>
-                    <a href="#" class="read-more">Read more</a>
+                    <img src="./images/001.jpg" alt="Success Story 3">
+                    <h3 class="blog-post-title">Tripled My Client Base with Digital Marketing</h3>
+                    <p class="blog-post-excerpt">"The digital marketing strategies I learned helped me transform my small business. Our online presence has grown exponentially, and revenue has increased by 200%." - Maria Garcia</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">Digital Marketing</span>
+                        <span class="badge bg-secondary">Business Growth</span>
+                    </div>
+                    <a href="#" class="read-more">Read full story <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
+            <!-- Success Story 4 -->
             <div class="col-md-6">
                 <div class="blog-post">
-                    <img src="./images/001.jpg" alt="Success Story 4"><br><br>
-                    <h3 class="blog-post-title">Success Story Title 4</h3>
-                    <p class="blog-post-excerpt">A brief overview of the success story, highlighting key achievements and outcomes. This is a short excerpt that gives readers an idea of what the full story will be about.</p>
-                    <a href="#" class="read-more">Read more</a>
+                    <img src="./images/001.jpg" alt="Success Story 4">
+                    <h3 class="blog-post-title">From Teacher to Tech Lead</h3>
+                    <p class="blog-post-excerpt">"Switching careers seemed impossible, but the structured curriculum and support from instructors made it achievable. Now I'm leading a development team at a major tech company." - James Wilson</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">Web Development</span>
+                        <span class="badge bg-secondary">Career Transition</span>
+                    </div>
+                    <a href="#" class="read-more">Read full story <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Call to Action Section -->
+    <section class="container-fluid py-5 my-5" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+        <div class="container text-center">
+            <h2>Ready to Start Your Learning Journey?</h2>
+            <p class="lead mb-4">Join thousands of students who have already transformed their careers with E-SHIKHON</p>
+            <a href="user_signup.php" class="btn btn-primary btn-lg">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -231,9 +285,8 @@
         </div>
     </footer>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- JavaScript Dependencies -->
+    <!-- Bootstrap Bundle with Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
